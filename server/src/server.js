@@ -9,6 +9,7 @@ const laptopRoute = require("./routes/laptops/laptop.route");
 const mobileRoute = require("./routes/mobiles/mobile.route");
 const houseRoute = require("./routes/houses/house.route");
 const carRoute = require("./routes/cars/car.route");
+const authRoute = require("./routes/auth/auth.route");
 
 const app = express();
 app.use(cors());
@@ -19,6 +20,7 @@ app.use("/laptops", laptopRoute);
 app.use("/mobiles", mobileRoute);
 app.use("/houses", houseRoute);
 app.use("/cars", carRoute);
+app.use("/auth", authRoute);
 
 app.get("/", (request, response) => {
     response.send("Hello, Topper!");
