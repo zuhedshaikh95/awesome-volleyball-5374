@@ -8,32 +8,109 @@ import {
   AccordionIcon,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { AiFillMobile } from "react-icons/ai";
+import { AiFillMobile, AiOutlineArrowLeft } from "react-icons/ai";
+import { AiFillHome } from "react-icons/ai";
+import { GiSofa } from "react-icons/gi";
+import { GiClothes } from "react-icons/gi";
+import { FaLaptop } from "react-icons/fa";
+import { RiMotorbikeFill } from "react-icons/ri";
+import "./Sellpage.css";
 
 const Sellpage = () => {
+  const handleSubcategory = (e) => {
+    console.log(e.target.innerText);
+    localStorage.setItem("subcategory", e.target.innerText);
+  };
+
+  const handleCategory = (e) => {
+    console.log(e.target.innerText);
+    localStorage.setItem("category", e.target.innerText);
+  };
   return (
     <>
-    <Heading>Post Your Ad</Heading>
-      <Box w={"50%"} m="auto" border={"1px solid"} borderColor="whitesmoke"  mt={"5%"}>
+      <div style={{ width: "100%", backgroundColor: "grey", height: "60px" }}>
+        <div style={{ width: "2%", height: "40px", marginLeft:"2%", paddingTop:"15px" ,}}>
+          <Link to="/postadd" >
+            <AiOutlineArrowLeft
+              style={{
+                marginLeft: "3%",
+                height: "100%",
+                width: "100%",
+                // border:"1px",
+                fontSize: ["30px", "35px"],
+              }}
+            />
+          </Link>
+        </div>
+      </div>
+      <Heading fontSize={["20px", "25", "30px"]} mt="5%">
+        Post Your Ad
+      </Heading>
+      <Box
+        w={"50%"}
+        m="auto"
+        border={"2px solid"}
+        borderColor="whitesmoke"
+        mt={"5%"}
+      >
         <Accordion allowToggle>
           <AccordionItem>
             <h2>
               <AccordionButton>
-                <Box flex="1" textAlign="left">
-                 <span><AiFillMobile/>Mobiles</span>
+                <Box
+                  flex="1"
+                  textAlign="left"
+                  display="flex"
+                  mt="2"
+                  alignItems="center"
+                  gap="2"
+                  fontSize={["17px", "22px", "24px"]}
+                  onClick={handleCategory}
+                >
+                  <AiFillMobile /> Mobiles
                 </Box>
-                <AccordionIcon />
+                <AccordionIcon w={["24px", "35px", "45px"]} />
               </AccordionButton>
             </h2>
-            <AccordionPanel pb={4} w={"100%"} padding="0px" fontSize={{sm:"20px" , md:"20px", lg:"22px"}} textAlign="initial" pl={"20px"} color="gray">
-              <Link to="/">
-                <Box borderBottom={"1px"} borderBottomColor="whitesmoke">Mobile Phones </Box>
+            <AccordionPanel
+              pb={4}
+              w={"100%"}
+              padding="0px"
+              fontSize={["15px", "20px", "20px"]}
+              textAlign="initial"
+              color="gray"
+              className="acpanel"
+            >
+              <Link to="/sellpage">
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Mobile Phones{" "}
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"2px"} borderBottomColor="whitesmoke">Accessories</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"2px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Accessories
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke"> Tablets</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  {" "}
+                  Tablets
+                </Box>
               </Link>
             </AccordionPanel>
           </AccordionItem>
@@ -41,24 +118,72 @@ const Sellpage = () => {
           <AccordionItem>
             <h2>
               <AccordionButton>
-                <Box flex="1" textAlign="left">
+                <Box
+                  flex="1"
+                  textAlign="left"
+                  display="flex"
+                  mt="2"
+                  alignItems="center"
+                  gap="2"
+                  fontSize={["17px", "22px", "24px"]}
+                  onClick={handleCategory}
+                >
+                  <RiMotorbikeFill />
                   Bikes
                 </Box>
-                <AccordionIcon />
+                <AccordionIcon w={["24px", "35px", "45px"]} />
               </AccordionButton>
             </h2>
-            <AccordionPanel pb={4} w={"100%"} padding="0px" fontSize={{sm:"20px" , md:"20px", lg:"22px"}} textAlign="initial" pl={"20px"} color="gray">
-            <Link to="/">
-                <Box borderBottom={"1px"} borderBottomColor="whitesmoke">Motorcylces</Box>
+            <AccordionPanel
+              pb={4}
+              w={"100%"}
+              padding="0px"
+              fontSize={["15px", "20px", "20px"]}
+              className="acpanel"
+              textAlign="initial"
+              color="gray"
+            >
+              <Link to="/">
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Motorcylces
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"2px"} borderBottomColor="whitesmoke">Scooters</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"2px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Scooters
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke"> Spare Parts</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  {" "}
+                  Spare Parts
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke"> Bicycles</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  {" "}
+                  Bicycles
+                </Box>
               </Link>
             </AccordionPanel>
           </AccordionItem>
@@ -66,24 +191,69 @@ const Sellpage = () => {
           <AccordionItem>
             <h2>
               <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  Furniture
+                <Box
+                  flex="1"
+                  textAlign="left"
+                  display="flex"
+                  mt="2"
+                  alignItems="center"
+                  gap="2"
+                  fontSize={["17px", "22px", "24px"]}
+                  onClick={handleCategory}
+                >
+                  <GiSofa /> Furniture
                 </Box>
-                <AccordionIcon />
+                <AccordionIcon w={["24px", "35px", "45px"]} />
               </AccordionButton>
             </h2>
-            <AccordionPanel pb={4} w={"100%"} padding="0px" fontSize={{sm:"20px" , md:"20px", lg:"22px"}} textAlign="initial" pl={"20px"} color="gray">
-            <Link to="/">
-                <Box borderBottom={"1px"} borderBottomColor="whitesmoke">Sofa Dining</Box>
+            <AccordionPanel
+              pb={4}
+              w={"100%"}
+              padding="0px"
+              fontSize={["15px", "20px", "20px"]}
+              className="acpanel"
+              textAlign="initial"
+              color="gray"
+            >
+              <Link to="/">
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Sofa Dining
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"2px"} borderBottomColor="whitesmoke">Beds & Wardrobes</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"2px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Beds & Wardrobes
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke">Kids Furniture</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Kids Furniture
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke">Home Decor & Garden</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Home Decor & Garden
+                </Box>
               </Link>
             </AccordionPanel>
           </AccordionItem>
@@ -91,21 +261,60 @@ const Sellpage = () => {
           <AccordionItem>
             <h2>
               <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  Fashion
+                <Box
+                  flex="1"
+                  textAlign="left"
+                  display="flex"
+                  mt="2"
+                  alignItems="center"
+                  gap="2"
+                  fontSize={["17px", "22px", "24px"]}
+                  onClick={handleCategory}
+                >
+                  <GiClothes /> Fashion
                 </Box>
-                <AccordionIcon />
+                <AccordionIcon w={["24px", "35px", "45px"]} />
               </AccordionButton>
             </h2>
-            <AccordionPanel pb={4} w={"100%"} padding="0px" fontSize={{sm:"20px" , md:"20px", lg:"22px"}} textAlign="initial" pl={"20px"} color="gray">
-            <Link to="/">
-                <Box borderBottom={"1px"} borderBottomColor="whitesmoke">Men</Box>
+            <AccordionPanel
+              pb={4}
+              w={"100%"}
+              padding="0px"
+              fontSize={["15px", "20px", "20px"]}
+              className="acpanel"
+              textAlign="initial"
+              color="gray"
+            >
+              <Link to="/">
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Men
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"2px"} borderBottomColor="whitesmoke">Women</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"2px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Women
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke"> Kids</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  {" "}
+                  Kids
+                </Box>
               </Link>
             </AccordionPanel>
           </AccordionItem>
@@ -113,27 +322,79 @@ const Sellpage = () => {
           <AccordionItem>
             <h2>
               <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  Properties
+                <Box
+                  flex="1"
+                  textAlign="left"
+                  display="flex"
+                  mt="2"
+                  alignItems="center"
+                  gap="2"
+                  fontSize={["17px", "22px", "24px"]}
+                  onClick={handleCategory}
+                >
+                  <AiFillHome /> Properties
                 </Box>
-                <AccordionIcon />
+                <AccordionIcon w={["24px", "35px", "45px"]} />
               </AccordionButton>
             </h2>
-            <AccordionPanel pb={4} w={"100%"} padding="0px" fontSize={{sm:"20px" , md:"20px", lg:"22px"}} textAlign="initial" pl={"20px"} color="gray">
-            <Link to="/">
-                <Box borderBottom={"1px"} borderBottomColor="whitesmoke">For Sale: Houses & Apartments</Box>
+            <AccordionPanel
+              pb={4}
+              w={"100%"}
+              padding="0px"
+              fontSize={["15px", "20px", "20px"]}
+              className="acpanel"
+              textAlign="initial"
+              color="gray"
+            >
+              <Link to="/">
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  For Sale: Houses & Apartments
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"2px"} borderBottomColor="whitesmoke">For Rent: Houses & Apartments</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"2px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  For Rent: Houses & Apartments
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke">For Sale: Shops & Offices</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  For Sale: Shops & Offices
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke">For Rent: Shops & Offices</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  For Rent: Shops & Offices
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke">PG & Guest Houses</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  PG & Guest Houses
+                </Box>
               </Link>
             </AccordionPanel>
           </AccordionItem>
@@ -141,63 +402,117 @@ const Sellpage = () => {
           <AccordionItem>
             <h2>
               <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  Electronic and Appliances
+                <Box
+                  flex="1"
+                  textAlign="left"
+                  display="flex"
+                  mt="2"
+                  alignItems="center"
+                  gap="2"
+                  fontSize={["17px", "22px", "24px"]}
+                  onClick={handleCategory}
+                >
+                  <FaLaptop /> Electronic and Appliances
                 </Box>
-                <AccordionIcon />
+                <AccordionIcon w={["24px", "35px", "45px"]} />
               </AccordionButton>
             </h2>
-            <AccordionPanel pb={4} w={"100%"} padding="0px" fontSize={{sm:"20px" , md:"20px", lg:"22px"}} textAlign="initial" pl={"20px"} color="gray">
-            <Link to="/">
-                <Box borderBottom={"1px"} borderBottomColor="whitesmoke">TV, Video - Audio</Box>
-              </Link>
+            <AccordionPanel
+              pb={4}
+              w={"100%"}
+              padding="0px"
+              fontSize={["15px", "20px", "20px"]}
+              className="acpanel"
+              textAlign="initial"
+              color="gray"
+            >
               <Link to="/">
-                <Box  borderBottom={"2px"} borderBottomColor="whitesmoke">Computer & Laptops</Box>
-              </Link>
-              <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke">Cameras & Lenses</Box>
-              </Link>
-              <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke">Games & Entertainment</Box>
-              </Link>
-              <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke">Fridges</Box>
-              </Link>
-              <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke">Computer Accessories</Box>
-              </Link>
-              <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke">Wasing Machine</Box>
-              </Link>
-            </AccordionPanel>
-          </AccordionItem>
-
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  Bikes
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  TV, Video - Audio
                 </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} w={"100%"} padding="0px" fontSize={{sm:"20px" , md:"20px", lg:"22px"}} textAlign="initial" pl={"20px"} color="gray">
-            <Link to="/">
-                <Box borderBottom={"1px"} borderBottomColor="whitesmoke">Motorcylces</Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"2px"} borderBottomColor="whitesmoke">Scooters</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"2px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Computer & Laptops
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke"> Spare Parts</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Cameras & Lenses
+                </Box>
               </Link>
               <Link to="/">
-                <Box  borderBottom={"1px"} borderBottomColor="whitesmoke"> Bicycles</Box>
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Games & Entertainment
+                </Box>
+              </Link>
+              <Link to="/">
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Fridges
+                </Box>
+              </Link>
+              <Link to="/">
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Computer Accessories
+                </Box>
+              </Link>
+              <Link to="/">
+                <Box
+                  pl="5%"
+                  borderBottom={"1px"}
+                  borderBottomColor="whitesmoke"
+                  onClick={handleSubcategory}
+                >
+                  Wasing Machine
+                </Box>
               </Link>
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
       </Box>
+      <div
+        style={{
+          width: "100%",
+          backgroundColor: "blue",
+          color: "white",
+          fontSize: "15px",
+          height: "30px",
+          textAlign: "center",
+          marginTop: "13.5%",
+        }}
+      >
+        Free Classifieds in India. © 2006-2022 OLX
+      </div>
     </>
   );
 };
