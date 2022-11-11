@@ -1,4 +1,5 @@
 const express = require("express");
+
 const Cars = require("../cars/car.model");
 const Bike = require("../bikes/bike.model");
 const Mobile = require("../mobiles/mobile.model");
@@ -8,7 +9,7 @@ const House = require("../houses/house.model");
 const app = express.Router();
 
 app.get("/", async (request, response) => {
-  const { limit } = request.query;
+  const { limit = 2 } = request.query;
   try {
     const cars = await Cars.find({}).limit(limit);
     const mobiles = await Mobile.find({}).limit(limit);
@@ -21,6 +22,5 @@ app.get("/", async (request, response) => {
     response.send(message);
   }
 });
-
 
 module.exports = app;

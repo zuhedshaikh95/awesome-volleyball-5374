@@ -28,7 +28,7 @@ app.use("/auth", authRoute);
 
 app.get("/", (request, response) => {
     response.send("Hello, Topper!");
-})
+});
 
 
 app.listen(PORT, async () => {
