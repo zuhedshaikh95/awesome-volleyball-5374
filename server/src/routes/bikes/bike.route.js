@@ -12,6 +12,17 @@ app.get("/", async (request, response) => {
   }
 });
 
+
+app.post("/", async (request, response) => {
+  try {
+    const bikes = await Bike.create(request.body);
+    response.send(bikes);
+    console.log(bikes)
+  } catch ({ message }) {
+    response.send(message);
+  }
+});
+
 app.get("/:_id", async (request, response) => {
   const { _id } = request.params;
   try {
