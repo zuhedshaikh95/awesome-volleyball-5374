@@ -17,7 +17,16 @@ app.get("/", async (request, response) => {
     const laptops = await Laptop.find({}).limit(limit);
     const houses = await House.find({}).limit(limit);
 
-    response.send([...cars, ...mobiles, ...houses, ...laptops, ...bikes]);
+    let combined = [...cars, ...mobiles, ...houses, ...laptops, ...bikes];
+
+    let currentIndex = combined.length;
+    while (currentIndex != 0) {
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [combined[currentIndex], combined[randomIndex]] = [combined[randomIndex],combined[currentIndex],];
+    }
+
+    response.send(combined);
   } catch ({ message }) {
     response.send(message);
   }
