@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const compression = require("compression");
 const PORT = 8080;
 
 const connect = require("./configs/db");
@@ -16,7 +15,6 @@ const authRoute = require("./routes/auth/auth.route");
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(compression());
 
 app.use("/bikes", bikeRoute);
 app.use("/laptops", laptopRoute);
