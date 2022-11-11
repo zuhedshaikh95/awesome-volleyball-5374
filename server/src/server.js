@@ -39,4 +39,4 @@ app.listen(PORT, async () => {
     catch({message}){
         console.log(message);
     }
-})
+});
