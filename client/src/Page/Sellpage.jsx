@@ -8,6 +8,7 @@ import {
   AccordionIcon,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { AiFillMobile } from "react-icons/ai";
 
 const Sellpage = () => {
   return (
@@ -19,7 +20,7 @@ const Sellpage = () => {
             <h2>
               <AccordionButton>
                 <Box flex="1" textAlign="left">
-                  Mobiles
+                 <span><AiFillMobile/>Mobiles</span>
                 </Box>
                 <AccordionIcon />
               </AccordionButton>

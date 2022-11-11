@@ -8,30 +8,53 @@ import {
   Heading,
   Image,
   Input,
-  TagLabel,
   Textarea,
 } from "@chakra-ui/react";
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
 
+let imgarray = []
 const PostAdd = () => {
   const [photo, setPhoto] = useState([]);
-  const [formData,setFormData] = useState({});
+  const [formData, setFormData] = useState({});
 
   const handlephoto = (e) => {
-    setPhoto([...photo, URL.createObjectURL(e.target.files[0])]);
-    setFormData({...formData,"photo":photo})
+    let image = e.target.files[0];
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "olxuploadimg");
+    data.append("cloud_name", "dcmmvm9mf");
+
+    fetch("https://api.cloudinary.com/v1_1/dcmmvm9mf/image/upload", {
+      method: "POST",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        let url = data.url
+        setPhoto([...photo,url]);
+        imgarray.push(url)
+      }).catch((err)=>{
+        console.log(err)
+      })
+    setFormData({ ...formData, image: imgarray });
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({...formData,[name]:value})
-}
-console.log(formData)
+    setFormData({ ...formData, [name]: value });
+  };
+  
+  console.log(formData);
+  const handleSubmit = async () => {
+    let response = await axios.post("http://localhost:8080/bikes", formData);
+    console.log(response.data);
+  };
 
   return (
     <Box w={"70%"} m="auto">
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <Heading>INCLUDE SOME DETAILS</Heading>
         <FormControl isRequired>
           <FormLabel>Brand</FormLabel>
@@ -39,7 +62,11 @@ console.log(formData)
         </FormControl>
         <FormControl isRequired>
           <FormLabel>Ad Title</FormLabel>
-          <Input placeholder="Ad Title" onChange={handleChange} name="adtitle" />
+          <Input
+            placeholder="Ad Title"
+            onChange={handleChange}
+            name="adtitle"
+          />
         </FormControl>
         <FormControl isRequired>
           <FormLabel>Description</FormLabel>
@@ -53,7 +80,12 @@ console.log(formData)
         <Heading>SET A PRICE</Heading>
         <FormControl isRequired>
           <FormLabel>Price</FormLabel>
-          <Input placeholder="Price" type="number" name="price" onChange={handleChange}/>
+          <Input
+            placeholder="Price"
+            type="number"
+            name="price"
+            onChange={handleChange}
+          />
         </FormControl>
         <Heading>UPLOAD UP TO 12 PHOTOS</Heading>
         <Input
@@ -75,7 +107,7 @@ console.log(formData)
         <Grid
           templateColumns={{
             sm: "repeat(2, 1fr)",
-            md: "repeat(4,1fr)",
+            md: "repeat(3,1fr)",
             lg: "repeat(4,1fr)",
           }}
           gap={6}
@@ -89,11 +121,12 @@ console.log(formData)
           })}
         </Grid>
         <Heading>Confirm Your Location</Heading>
-        <select name="location" onChange={handleChange} >
-            <option value="ghg">"n</option>
-            <option value="sdljsd">ljksdlk</option>
-            <option value="ljksl">ljksdlk</option>
+        <select name="location" onChange={handleChange}>
+          <option value="banglore">Banglore</option>
+          <option value="delhi">Delhi</option>
+          <option value="mumbai">Mumbai</option>
         </select>
+        <Button type="submit"> Post</Button>
       </form>
     </Box>
   );
