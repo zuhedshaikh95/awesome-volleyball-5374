@@ -59,12 +59,12 @@ const Motorcycles = () => {
   }, [city]);
 
   const handlePriceLimit = () => {
-    setLoading(false)
+    setLoading(false);
     setFilterData(
       data.filter((item) => item.price >= minFilter && item.price <= maxFilter)
     );
     setTimeout(() => {
-      setLoading(true)
+      setLoading(true);
     }, 1000)
   };
 
