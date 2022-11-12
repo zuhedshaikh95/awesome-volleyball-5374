@@ -7,6 +7,11 @@ const Navbar = () => {
         <Link to="/postadd"> Postadd</Link>
         <Link to="/sellpage"> Sellpage</Link>
         <Link to="/yourad"> Your Ads</Link>
+        <Link to="/house"> House</Link>
+        <Link to="/car"> Car</Link>
+        <Link to="/bike"> Bike</Link>
+        <Link to="/mobile"> Mobile</Link>
+        <Link to="/laptop"> Laptop</Link>
     </div>
   )
 }
