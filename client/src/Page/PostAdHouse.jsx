@@ -77,7 +77,7 @@ const PostAdHouse = () => {
 
   console.log(formData);
   const handleSubmit = async () => {
-    setFormData({ ...formData, postDate: posted, type: "House" });
+    setFormData({ ...formData, postDate: posted, type: "house" });
     console.log("formData", formData);
     let response = await axios.post(
       "https://olx-data-server-hwrf.onrender.com/houses",

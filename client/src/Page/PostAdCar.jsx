@@ -76,10 +76,10 @@ const PostAdCar = () => {
 
   console.log(formData);
   const handleSubmit = async () => {
-    setFormData({ ...formData, postedOn: posted, type: "Mobile" });
+    setFormData({ ...formData, postedOn: posted, type: "car" });
     console.log("formData", formData);
     let response = await axios.post(
-      "https://olx-data-server-hwrf.onrender.com/mobiles",
+      "https://olx-data-server-hwrf.onrender.com/cars",
       formData
     );
     console.log(response.data);

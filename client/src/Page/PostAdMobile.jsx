@@ -76,7 +76,7 @@ const PostAdMobile = () => {
 
   console.log(formData);
   const handleSubmit = async () => {
-    setFormData({ ...formData, postedOn: posted, type: "Mobile" });
+    setFormData({ ...formData, postedOn: posted, type: "mobile" });
     console.log("formData", formData);
     let response = await axios.post(
       "https://olx-data-server-hwrf.onrender.com/mobiles",

@@ -36,7 +36,6 @@ const Sellpage = () => {
                 marginLeft: "3%",
                 height: "100%",
                 width: "100%",
-                // border:"1px",
                 fontSize: ["30px", "35px"],
               }}
             />
@@ -81,17 +80,17 @@ const Sellpage = () => {
               color="gray"
               className="acpanel"
             >
-              <Link to="/sellpage">
+              <Link to="/mobile">
                 <Box
                   pl="5%"
                   borderBottom={"1px"}
                   borderBottomColor="whitesmoke"
                   onClick={handleSubcategory}
                 >
-                  Mobile Phones{" "}
+                  Mobile Phones
                 </Box>
               </Link>
-              <Link to="/">
+              <Link to="/mobile">
                 <Box
                   pl="5%"
                   borderBottom={"2px"}
@@ -101,14 +100,13 @@ const Sellpage = () => {
                   Accessories
                 </Box>
               </Link>
-              <Link to="/">
+              <Link to="/mobile">
                 <Box
                   pl="5%"
                   borderBottom={"1px"}
                   borderBottomColor="whitesmoke"
                   onClick={handleSubcategory}
                 >
-                  {" "}
                   Tablets
                 </Box>
               </Link>
@@ -143,7 +141,7 @@ const Sellpage = () => {
               textAlign="initial"
               color="gray"
             >
-              <Link to="/">
+              <Link to="/bike">
                 <Box
                   pl="5%"
                   borderBottom={"1px"}
@@ -153,7 +151,7 @@ const Sellpage = () => {
                   Motorcylces
                 </Box>
               </Link>
-              <Link to="/">
+              <Link to="/bike">
                 <Box
                   pl="5%"
                   borderBottom={"2px"}
@@ -163,7 +161,7 @@ const Sellpage = () => {
                   Scooters
                 </Box>
               </Link>
-              <Link to="/">
+              <Link to="/bike">
                 <Box
                   pl="5%"
                   borderBottom={"1px"}
@@ -173,14 +171,13 @@ const Sellpage = () => {
                   Spare Parts
                 </Box>
               </Link>
-              <Link to="/">
+              <Link to="/bike">
                 <Box
                   pl="5%"
                   borderBottom={"1px"}
                   borderBottomColor="whitesmoke"
                   onClick={handleSubcategory}
                 >
-                  {" "}
                   Bicycles
                 </Box>
               </Link>
@@ -344,7 +341,7 @@ const Sellpage = () => {
               textAlign="initial"
               color="gray"
             >
-              <Link to="/">
+              <Link to="/house">
                 <Box
                   pl="5%"
                   borderBottom={"1px"}
@@ -354,7 +351,7 @@ const Sellpage = () => {
                   For Sale: Houses & Apartments
                 </Box>
               </Link>
-              <Link to="/">
+              <Link to="/house">
                 <Box
                   pl="5%"
                   borderBottom={"2px"}
@@ -374,7 +371,7 @@ const Sellpage = () => {
                   For Sale: Shops & Offices
                 </Box>
               </Link>
-              <Link to="/">
+              <Link to="/house">
                 <Box
                   pl="5%"
                   borderBottom={"1px"}
@@ -384,7 +381,7 @@ const Sellpage = () => {
                   For Rent: Shops & Offices
                 </Box>
               </Link>
-              <Link to="/">
+              <Link to="/house">
                 <Box
                   pl="5%"
                   borderBottom={"1px"}
