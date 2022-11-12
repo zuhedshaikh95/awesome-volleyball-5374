@@ -165,7 +165,6 @@ const UpNavbar = () => {
               colorScheme="black"
               variant="link"
               fontWeight="600"
-              // borderBottom=" 2px solid black"
               borderRadius="none"
              mb={80}
             >
@@ -233,10 +232,10 @@ const UpNavbar = () => {
                   </Flex>
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>Link 1</MenuItem>
-                  <MenuItem>Link 2</MenuItem>
+                  <MenuItem>Varanasi</MenuItem>
+                  <MenuItem>Delhi</MenuItem>
                   <MenuDivider />
-                  <MenuItem>Link 3</MenuItem>
+                  <MenuItem>Bangalore</MenuItem>
                 </MenuList>
               </Menu>
             </Flex>
