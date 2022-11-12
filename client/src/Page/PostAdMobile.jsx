@@ -51,7 +51,11 @@ const PostAdMobile = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  console.log(new Date());
+  let subcategory = localStorage.getItem("subcategory")
+  let type = localStorage.getItem("type");
+  console.log(subcategory,type)
+
+
   const months = [
     "January",
     "February",
@@ -115,7 +119,7 @@ const PostAdMobile = () => {
             mt="8px"
             mb="20px"
           >
-            Mobile / Mobile Phones
+            {type} / {subcategory}
           </Text>
         </Box>
         <form onSubmit={handleSubmit}>
