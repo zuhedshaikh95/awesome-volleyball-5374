@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 let imgarray = [];
 const PostAdd = () => {
   const [photo, setPhoto] = useState([]);
+  const [imgurl, setImgUrl] = useState("");
   const [formData, setFormData] = useState({});
 
   const handlephoto = (e) => {
@@ -37,6 +38,7 @@ const PostAdd = () => {
       .then((data) => {
         let url = data.url;
         setPhoto([...photo, url]);
+
         imgarray.push(url);
       })
       .catch((err) => {
@@ -52,22 +54,25 @@ const PostAdd = () => {
 
   console.log(formData);
   const handleSubmit = async () => {
-    let response = await axios.post("http://localhost:8080/bikes", formData);
+    let response = await axios.post(
+      "https://olx-data-server-hwrf.onrender.com/bikes",
+      formData
+    );
     console.log(response.data);
   };
 
   return (
     <>
       <div style={{ width: "100%", backgroundColor: "grey", height: "60px" }}>
-          <Link to="/postadd">
-            <AiOutlineArrowLeft
-              style={{
-                marginLeft: "3%",
-                height: "100%",
-                fontSize: ["30px", "35px"],
-              }}
-            />
-          </Link>
+        <Link to="/postadd">
+          <AiOutlineArrowLeft
+            style={{
+              marginLeft: "3%",
+              height: "100%",
+              fontSize: ["30px", "35px"],
+            }}
+          />
+        </Link>
       </div>
       <Box w={"50%"} m="auto" padding="0%" mt="40px">
         <Box w="100%" border="1px" borderBottomColor="transparent">
@@ -114,7 +119,7 @@ const PostAdd = () => {
                 onChange={handleChange}
                 name="brand"
                 fontSize={["16px", "18px", "22px"]}
-                h={["40px", "50px", "60px"]}
+                h={["40px", "50px", "50px"]}
               />
             </FormControl>
             <FormControl isRequired>
@@ -130,7 +135,7 @@ const PostAdd = () => {
                 onChange={handleChange}
                 name="adtitle"
                 fontSize={["16px", "18px", "22px"]}
-                h={["40px", "50px", "60px"]}
+                h={["40px", "50px", "50px"]}
               />
             </FormControl>
             <FormControl isRequired>
@@ -176,7 +181,7 @@ const PostAdd = () => {
                 name="price"
                 onChange={handleChange}
                 fontSize={["16px", "18px", "22px"]}
-                h={["40px", "50px", "60px"]}
+                h={["40px", "50px", "50px"]}
                 mb="40px"
               />
             </FormControl>
@@ -188,26 +193,102 @@ const PostAdd = () => {
             pr="8%"
             borderBottomColor="transparent"
           >
-            <Heading fontSize={["20px", "25", "30px"]}>
+            <Heading fontSize={["20px", "25", "30px"]} mt="30px">
               UPLOAD UP TO 4 PHOTOS
             </Heading>
-            <Input
-              type="file"
-              name="image"
-              onChange={handlephoto}
-              id="upload"
-              w="100px"
-              h="100px"
-              hidden
-            ></Input>
-            <FormLabel
-              htmlFor="upload"
-              title="Click to choose a file"
-              border={"2px"}
-            >
-              Hello
-            </FormLabel>
-            <Grid
+            <Grid templateColumns={[
+                "repeat(1, 1fr)",
+                "repeat(2,1fr)",
+                 "repeat(4,1fr)",
+              ]}
+              templateRows={[
+                "repeat(4,200px)",
+                "repeat(2,200px)",
+                "repeat(1,200px)",
+              ]}
+              gap={1} mt="20px">
+              <GridItem>
+              <Input
+                type="file"
+                name="image"
+                onChange={handlephoto}
+                id="upload"
+                w="100px"
+                h="100px"
+                hidden
+              ></Input>
+              <FormLabel
+                htmlFor="upload"
+                title="Click to choose a file"
+                border={"2px"}
+              >
+                <Box w="100%" h="100px" >
+                  <Image w="100%" h="100%" src={photo ? photo[0] : null}></Image>
+                </Box>
+              </FormLabel>
+              </GridItem>
+              <GridItem>
+              <Input
+                type="file"
+                name="image"
+                onChange={handlephoto}
+                id="upload"
+                w="100px"
+                h="100px"
+                hidden
+              ></Input>
+              <FormLabel
+                htmlFor="upload"
+                title="Click to choose a file"
+                border={"2px"}
+              >
+                <Box w="100%" h="100px">
+                  <Image w="100%" h="100%" src={photo ? photo[1] : null}></Image>
+                </Box>
+              </FormLabel>
+              </GridItem>
+              <GridItem>
+              <Input
+                type="file"
+                name="image"
+                onChange={handlephoto}
+                id="upload"
+                w="100px"
+                h="100px"
+                hidden
+              ></Input>
+              <FormLabel
+                htmlFor="upload"
+                title="Click to choose a file"
+                border={"2px"}
+              >
+                <Box w="100%" h="100px">
+                  <Image w="100%" h="100%" src={photo ? photo[2] : null}></Image>
+                </Box>
+              </FormLabel>
+              </GridItem>
+              <GridItem>
+              <Input
+                type="file"
+                name="image"
+                onChange={handlephoto}
+                id="upload"
+                w="100px"
+                h="100px"
+                hidden
+              ></Input>
+              <FormLabel
+                htmlFor="upload"
+                title="Click to choose a file"
+                border={"2px"}
+              >
+                <Box w="100%" h="100px">
+                  <Image src={photo ? photo[3] : null}></Image>
+                </Box>
+              </FormLabel>
+              </GridItem>
+            </Grid>
+            {/* <Grid
               templateColumns={{
                 sm: "repeat(2, 1fr)",
                 md: "repeat(4,1fr)",
@@ -227,7 +308,7 @@ const PostAdd = () => {
                   </GridItem>
                 );
               })}
-            </Grid>
+            </Grid> */}
           </Box>
           <Box
             w="100%"

@@ -24,7 +24,7 @@ const Sellpage = () => {
 
   const handleCategory = (e) => {
     console.log(e.target.innerText);
-    localStorage.setItem("category", e.target.innerText);
+    localStorage.setItem("type", e.target.innerText);
   };
   return (
     <>
@@ -43,7 +43,7 @@ const Sellpage = () => {
           </Link>
         </div>
       </div>
-      <Heading fontSize={["20px", "25", "30px"]} mt="5%">
+      <Heading fontSize={["20px", "25", "30px"]} mt="2%">
         Post Your Ad
       </Heading>
       <Box
@@ -51,7 +51,7 @@ const Sellpage = () => {
         m="auto"
         border={"2px solid"}
         borderColor="whitesmoke"
-        mt={"5%"}
+        mt={"2%"}
       >
         <Accordion allowToggle>
           <AccordionItem>
@@ -170,7 +170,6 @@ const Sellpage = () => {
                   borderBottomColor="whitesmoke"
                   onClick={handleSubcategory}
                 >
-                  {" "}
                   Spare Parts
                 </Box>
               </Link>
@@ -312,7 +311,6 @@ const Sellpage = () => {
                   borderBottomColor="whitesmoke"
                   onClick={handleSubcategory}
                 >
-                  {" "}
                   Kids
                 </Box>
               </Link>
@@ -508,7 +506,8 @@ const Sellpage = () => {
           fontSize: "15px",
           height: "30px",
           textAlign: "center",
-          marginTop: "13.5%",
+          marginTop: "165px",
+          position: "sticky"
         }}
       >
         Free Classifieds in India. © 2006-2022 OLX
