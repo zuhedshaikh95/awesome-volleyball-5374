@@ -17,7 +17,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { FiHeart } from "react-icons/fi";
 import Footer from "../components/Footer";
 import NoData from "./NoData";
-import { AddFav } from "../AuthContext/Fav";
+import { AppContext } from "../AuthContext/AppContextProvider";
 
 const setIntoNum = (value) => {
   value = Number(value);
@@ -37,7 +37,7 @@ function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialVal = setIntoNum(searchParams.get("limit"));
   const [limit, setLimit] = useState(initialVal * 2);
-  const { addToFav, favItem } = useContext(AddFav);
+  const { addToFav, favItem } = useContext(AppContext);
 
   useEffect(() => {
     getData({

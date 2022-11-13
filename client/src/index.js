@@ -6,7 +6,8 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import { store } from "./redux/store";
-import AddFavProvider from "./AuthContext/Fav";
+import AppContextProvider from "./AuthContext/AppContextProvider";
+import ContextModalProvider from "./AuthContext/ContexModal";
 
 const rootDOM = document.getElementById("root");
 const root = ReactDOM.createRoot(rootDOM);
@@ -14,9 +15,11 @@ root.render(
   <ChakraProvider>
     <BrowserRouter>
       <Provider store={store}>
-        <AddFavProvider>
-          <App />
-        </AddFavProvider>
+        <ContextModalProvider>
+          <AppContextProvider>
+            <App />
+          </AppContextProvider>
+        </ContextModalProvider>
       </Provider>
     </BrowserRouter>
   </ChakraProvider>

@@ -4,6 +4,7 @@ import Cars from "../pages/Cars";
 import Mobiles from "../pages/Mobiles";
 import Laptops from "../pages/Laptops";
 import Houses from "../pages/Houses";
+
 import LaptopSingle from "../pages/LaptopSingle";
 import BikesSingle from "../pages/BikesSingle";
 import CarSingle from "../pages/CarSingle";
@@ -12,9 +13,26 @@ import MobileSingle from "../pages/MobileSingle";
 import HomePage from "../pages/HomePage";
 import Footer from "../components/Footer";
 
+import DummyLogin from "../pages/SigninPages/DummyLogin";
+import LoginEmail from "../pages/SigninPages/Login_Email";
+import LoginMobile from "../pages/SigninPages/LoginMobile";
+
+import Navbar1 from "../components/Navbar/Navbar1";
+import Navbar2 from "../components/Navbar/Navbar2";
+
+import Sellpage from "../pages/SellPage";
+import PostAdHouse from "../pages/PostAdHouse";
+import PostAdBike from "../pages/PostAdBike";
+import PostAdLaptop from "../pages/PostAdLaptop";
+import PostAdMobile from "../pages/PostAdMobile";
+import PostAdCar from "../pages/PostAdCar";
+
+
 const AllRoutes = () => {
   return (
     <>
+      <Navbar1 />
+      <Navbar2 />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
 
@@ -32,6 +50,17 @@ const AllRoutes = () => {
 
         <Route path="/houses" element={<Houses />}></Route>
         <Route path="/houses/:_id" element={<HouseSingle />} />
+
+        <Route path="/" element={<DummyLogin />}></Route>
+        <Route path="/contwithphone" element={<LoginMobile />}></Route>
+        <Route path="/contwithemail" element={<LoginEmail />}></Route>
+
+        <Route path="/sellpage" element={<Sellpage />}></Route>
+        <Route path="/sellhouse" element={<PostAdHouse />}></Route>
+        <Route path="/sellmobile" element={<PostAdMobile />}></Route>
+        <Route path="/selllaptop" element={<PostAdLaptop />}></Route>
+        <Route path="/sellcar" element={<PostAdCar />}></Route>
+        <Route path="/sellbike" element={<PostAdBike />}></Route>
       </Routes>
       <Footer />
     </>
