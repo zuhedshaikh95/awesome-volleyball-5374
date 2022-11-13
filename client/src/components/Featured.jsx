@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
+import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import {
   Box,
   Button,
+  Flex,
   Image,
   SimpleGrid,
   Skeleton,
   Stack,
   Text,
   Tooltip,
-  useToast,
 } from "@chakra-ui/react";
 import { getData } from "../api/api";
 import { Link, useSearchParams } from "react-router-dom";
@@ -19,68 +20,12 @@ import { BsSuitHeartFill } from "react-icons/bs";
 import Footer from "../components/Footer";
 import NotFound from "./NotFound";
 import NoData from "./NoData";
-import { AddFav } from "../AuthContext/Fav";
-
-const setIntoNum = (value) => {
-  value = Number(value);
-  if (typeof value === "number" && value <= 0) {
-    value = 2;
-  }
-  if (!value) {
-    value = 2;
-  }
-  return value;
-};
-
-function HomePage() {
-  const [products, setProducts] = useState([]);
-  const toast = useToast();
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const initialVal = setIntoNum(searchParams.get("limit"));
-  const [limit, setLimit] = useState(initialVal);
-  const { addToFav, favItem } = useContext(AddFav);
-
-  useEffect(() => {
-    getData({
-      limit: limit,
-    }).then((res) => {
-      setProducts(res.data);
-      setIsLoaded(false);
-      if (products.length === 0) {
-        return <NoData />;
-      }
-    });
-  }, [limit]);
-
-  useEffect(() => {
-    setSearchParams({ limit });
-  }, [limit]);
-
-  useEffect(() => {
-    setInterval(() => {
-      setIsLoaded(true);
-    }, 2000);
-  }, [!isLoaded]);
-
-  const addFav = (item) => {
-    addToFav(item);
-    toast({
-      title: "Added.",
-      description: "Added to favorites.",
-      status: "success",
-      duration: 9000,
-      isClosable: true,
-    });
-  };
-
+function Featured() {
   return (
     <>
       <Box width={"90%"} margin="auto">
         <Box display={"flex"}>
-          <Text fontSize={["22px", "24px", "26px", "32px"]}>
-            Fresh recommendations
-          </Text>
+          <Text fontSize={"32px"}>Fresh recommendations</Text>
         </Box>
 
         <SimpleGrid
@@ -95,7 +40,6 @@ function HomePage() {
               bg={"#6495ED"}
               borderRadius="10px"
               height={"400px"}
-              marginTop="20px"
               color="white"
             >
               <Box margin={"auto"}>
@@ -105,7 +49,8 @@ function HomePage() {
               </Box>
               <Box margin={"auto"} marginTop={"20px"}>
                 <Text fontSize={"21px"}>
-                  Make some extra cash by selling things in your community.Go on, it's quick and easy
+                  Make some extrs cash by selling things in your community.Go on
+                  , it's quick and easy
                 </Text>
               </Box>
               <Button
@@ -122,6 +67,7 @@ function HomePage() {
             </Box>
           </Skeleton>
           {products.map((item) => (
+            <>
               <Box
                 key={item.id}
                 margin={"auto"}
@@ -130,34 +76,14 @@ function HomePage() {
                 borderRadius="lg"
                 overflow="hidden"
               >
-                <Box
-                  onClick={() => addFav(item)}
-                  display={"flex"}
-                  justifyContent={"flex-end"}
-                >
+                <Box onClick={changeHeart}>
+                  {/* <Tooltip label="I don't close on click" closeOnClick={false}> */}
                   <FiHeart
                     size={25}
-                    style={{ marginRight: "10px", marginTop: "20px" }}
+                    style={{ marginLeft: "10px", marginTop: "20px" }}
                   />
                   {/* </Tooltip> */}
                 </Box>
-                {item.featured === true ? (
-                  <Skeleton
-                    startColor="black"
-                    endColor="white"
-                    isLoaded={isLoaded}
-                  >
-                    <Box
-                      width="30%"
-                      bg={"orange"}
-                      p={1}
-                      marginBottom="20px"
-                      marginLeft={"10px"}
-                    >
-                      <Text>FEATURED</Text>
-                    </Box>
-                  </Skeleton>
-                ) : null}
                 <Skeleton
                   startColor="black"
                   endColor="white"
@@ -181,7 +107,7 @@ function HomePage() {
                     endColor="white"
                     isLoaded={isLoaded}
                   >
-                    <Link to={`${item.type}/${item._id}`}>
+                    <Link to={`/${item._id}`}>
                       <Box
                         mt="1"
                         lineHeight="tight"
@@ -202,7 +128,7 @@ function HomePage() {
                     endColor="white"
                     isLoaded={isLoaded}
                   >
-                    <Link to={`${item.type}/${item._id}`}>
+                    <Link to={`/${item._id}`}>
                       <Box mt="1" lineHeight="tight" noOfLines={1}>
                         <Text
                           fontSize={["13px", "14px", "15px", "18px"]}
@@ -214,7 +140,7 @@ function HomePage() {
                     </Link>
                   </Skeleton>
 
-                  <Link to={`${item.type}/${item._id}`}>
+                  <Link to={`/${item._id}`}>
                     <Box
                       mt="1"
                       lineHeight="tight"
@@ -250,6 +176,7 @@ function HomePage() {
                   </Link>
                 </Box>
               </Box>
+            </>
           ))}
         </SimpleGrid>
       </Box>
@@ -261,15 +188,14 @@ function HomePage() {
             bg={"white"}
             border="3px solid"
             p={7}
-            onClick={() => setLimit((limit + 1))}
+            onClick={() => setLimit(limit + 1)}
           >
             Load more
           </Button>
         </Box>
       </Skeleton>
-      <Footer />
     </>
   );
 }
 
-export default HomePage;
+export default Featured;

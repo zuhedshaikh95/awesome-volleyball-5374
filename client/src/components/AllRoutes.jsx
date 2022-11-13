@@ -10,10 +10,13 @@ import BikesSingle from "../pages/BikesSingle";
 import CarSingle from "../pages/CarSingle";
 import HouseSingle from "../pages/HouseSingle";
 import MobileSingle from "../pages/MobileSingle";
+import HomePage from "../pages/HomePage";
 
 const AllRoutes = () => {
   return (
     <Routes>
+      <Route path="/" element={<HomePage />}></Route>
+
         <Route path="/bikes" element={<Motorcycle />}></Route>
         <Route path='/bikes/:_id' element={<BikesSingle/>}/>
 
