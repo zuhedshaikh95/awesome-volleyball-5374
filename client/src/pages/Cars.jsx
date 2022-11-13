@@ -22,25 +22,25 @@ import {
   RangeSliderThumb,
   Accordion,
   AccordionButton,
-  AccordionIcon,
-  AccordionItem,
   AccordionPanel,
+  AccordionIcon,
+  AccordionItem
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 import ProductCard from "../components/ProductCard";
 
-const Motorcycles = () => {
+const Cars = () => {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [city, setCity] = useState("India");
   const [minFilter, setMinFilter] = useState(0);
-  const [maxFilter, setMaxFilter] = useState(200000);
+  const [maxFilter, setMaxFilter] = useState(3000000);
 
   useEffect(() => {
     axios
-      .get(`https://olx-data-server-hwrf.onrender.com/bikes`)
+      .get(`https://olx-data-server-hwrf.onrender.com/cars`)
       .then(({ data }) => {
         setData(data);
         setFilterData(data);
@@ -66,9 +66,7 @@ const Motorcycles = () => {
   const handlePriceLimit = () => {
     setLoading(false);
     setFilterData(
-      filterData.filter(
-        (item) => item.price >= minFilter && item.price <= maxFilter
-      )
+      filterData.filter((item) => item.price >= minFilter && item.price <= maxFilter)
     );
     setTimeout(() => {
       setLoading(true);
@@ -78,10 +76,14 @@ const Motorcycles = () => {
   return (
     <Container maxW="95%" p={0} textAlign="left">
       <Heading color="#002F34" fontSize="2xl">
-        Used bikes in {city}
+        Used cars in {city}
       </Heading>
       <Flex w="100%" justifyContent="space-between">
-        <Box w="25%" h="100vh" display={{ base: "none", md: "block" }}>
+        <Box
+          w="25%"
+          h="100vh"
+          display={{ base: "none", md: "block" }}
+        >
           <Box p={4}>
             <Text fontWeight="bold" my={4}>
               Location
@@ -171,9 +173,9 @@ const Motorcycles = () => {
               <RangeSlider
                 colorScheme="blackAlpha"
                 aria-label={["min", "max"]}
-                max={200000}
+                max={3000000}
                 min={0}
-                defaultValue={[0, 200000]}
+                defaultValue={[0, 3000000]}
                 onChange={(val) => {
                   setMinFilter(val[0]);
                   setMaxFilter(val[1]);
@@ -241,7 +243,9 @@ const Motorcycles = () => {
           <Flex gap={5} flexWrap="wrap" justifyContent="flex-start" w="100%">
             {filterData.map((item) => (
               <Skeleton key={item._id} w="300px" h="auto" isLoaded={loading}>
-                <ProductCard item={item} />
+                <Link to={`/cars/${item._id}`}>
+                  <ProductCard item={item} />
+                </Link>
               </Skeleton>
             ))}
           </Flex>
@@ -251,4 +255,4 @@ const Motorcycles = () => {
   );
 };
 
-export default Motorcycles;
+export default Cars;

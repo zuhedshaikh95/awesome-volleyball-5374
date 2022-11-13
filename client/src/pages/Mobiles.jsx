@@ -22,25 +22,25 @@ import {
   RangeSliderThumb,
   Accordion,
   AccordionButton,
-  AccordionIcon,
-  AccordionItem,
   AccordionPanel,
+  AccordionItem,
+  AccordionIcon
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 import ProductCard from "../components/ProductCard";
 
-const Motorcycles = () => {
+const Mobiles = () => {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [city, setCity] = useState("India");
   const [minFilter, setMinFilter] = useState(0);
-  const [maxFilter, setMaxFilter] = useState(200000);
+  const [maxFilter, setMaxFilter] = useState(100000);
 
   useEffect(() => {
     axios
-      .get(`https://olx-data-server-hwrf.onrender.com/bikes`)
+      .get(`https://olx-data-server-hwrf.onrender.com/mobiles`)
       .then(({ data }) => {
         setData(data);
         setFilterData(data);
@@ -51,7 +51,7 @@ const Motorcycles = () => {
   }, []);
 
   useEffect(() => {
-    setLoading(false);
+    setLoading(false)
     if (city) {
       setFilterData(data.filter((item) => item.location.includes(city)));
     } else if (city === "India") {
@@ -59,33 +59,33 @@ const Motorcycles = () => {
     }
 
     setTimeout(() => {
-      setLoading(true);
-    }, 1000);
+      setLoading(true)
+    }, 1000)
   }, [city]);
 
   const handlePriceLimit = () => {
     setLoading(false);
     setFilterData(
-      filterData.filter(
-        (item) => item.price >= minFilter && item.price <= maxFilter
-      )
+      filterData.filter((item) => item.price >= minFilter && item.price <= maxFilter)
     );
     setTimeout(() => {
       setLoading(true);
-    }, 1000);
+    }, 1000)
   };
 
   return (
     <Container maxW="95%" p={0} textAlign="left">
       <Heading color="#002F34" fontSize="2xl">
-        Used bikes in {city}
+        Used mobiles in {city}
       </Heading>
       <Flex w="100%" justifyContent="space-between">
-        <Box w="25%" h="100vh" display={{ base: "none", md: "block" }}>
+        <Box
+          w="25%"
+          h="100vh"
+          display={{ base: "none", md: "block" }}
+        >
           <Box p={4}>
-            <Text fontWeight="bold" my={4}>
-              Location
-            </Text>
+            <Text fontWeight="bold" my={4}>Location</Text>
             <Accordion defaultIndex={[0]} allowMultiple>
               <AccordionItem>
                 <h2>
@@ -171,9 +171,9 @@ const Motorcycles = () => {
               <RangeSlider
                 colorScheme="blackAlpha"
                 aria-label={["min", "max"]}
-                max={200000}
+                max={100000}
                 min={0}
-                defaultValue={[0, 200000]}
+                defaultValue={[0, 100000]}
                 onChange={(val) => {
                   setMinFilter(val[0]);
                   setMaxFilter(val[1]);
@@ -211,9 +211,7 @@ const Motorcycles = () => {
                   <MenuItem
                     onClick={() => {
                       setLoading(false);
-                      setFilterData(
-                        filterData.sort((a, b) => a.price - b.price)
-                      );
+                      setFilterData(filterData.sort((a, b) => a.price - b.price));
                       setTimeout(() => {
                         setLoading(true);
                       }, 1000);
@@ -224,9 +222,7 @@ const Motorcycles = () => {
                   <MenuItem
                     onClick={() => {
                       setLoading(false);
-                      setFilterData(
-                        filterData.sort((a, b) => b.price - a.price)
-                      );
+                      setFilterData(filterData.sort((a, b) => b.price - a.price));
                       setTimeout(() => {
                         setLoading(true);
                       }, 1000);
@@ -251,4 +247,4 @@ const Motorcycles = () => {
   );
 };
 
-export default Motorcycles;
+export default Mobiles;

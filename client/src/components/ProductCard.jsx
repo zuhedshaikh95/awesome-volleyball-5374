@@ -72,24 +72,3 @@ const ProductCard = (props) => {
 };
 
 export default ProductCard;
-
-/*{
-    "_id": "636dec791686f855f80522f6",
-    "productImages": [
-        "https://apollo-singapore.akamaized.net/v1/files/qmn5w3pyl3u12-IN/image;s=780x0;q=60",
-        "https://apollo-singapore.akamaized.net/v1/files/2qr8mtvfc6bb1-IN/image;s=780x0;q=60",
-        "https://apollo-singapore.akamaized.net/v1/files/vv06fbgxd5gl1-IN/image;s=780x0;q=60",
-        "https://apollo-singapore.akamaized.net/v1/files/2pev5bf6fdfu-IN/image;s=780x0;q=60"
-    ],
-    "productName": "Benalli TNT 25",
-    "brandName": "Benalli",
-    "yearOfPurchase": 2008,
-    "model": "Benalli TNT 25 - well maintained and less used",
-    "physicalCondition": "Working fine",
-    "description": "Benalli TNT 25 - well maintained and less used. Stable and smooth to ride. Only super bike which can be used for short and long distance.",
-    "price": 149000,
-    "location": "Feroke, Kozhikode, Kerala",
-    "postedOn": "10 weeks ago",
-    "featured": true,
-    "type": "bike"
-}*/
