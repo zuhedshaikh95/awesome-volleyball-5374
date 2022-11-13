@@ -15,9 +15,7 @@ import {
 import { getData } from "../api/api";
 import { Link, useSearchParams } from "react-router-dom";
 import { FiHeart } from "react-icons/fi";
-import { BsSuitHeartFill } from "react-icons/bs";
 import Footer from "../components/Footer";
-import NotFound from "./NotFound";
 import NoData from "./NoData";
 import { AddFav } from "../AuthContext/Fav";
 
@@ -38,7 +36,7 @@ function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const initialVal = setIntoNum(searchParams.get("limit"));
-  const [limit, setLimit] = useState(initialVal);
+  const [limit, setLimit] = useState(initialVal * 2);
   const { addToFav, favItem } = useContext(AddFav);
 
   useEffect(() => {
@@ -85,7 +83,7 @@ function HomePage() {
 
         <SimpleGrid
           columns={[1, 2, 3, 4]}
-          gap={"15px"}
+          gap={"20px"}
           margin="auto"
           marginTop={"20px"}
         >
@@ -267,7 +265,6 @@ function HomePage() {
           </Button>
         </Box>
       </Skeleton>
-      <Footer />
     </>
   );
 }
