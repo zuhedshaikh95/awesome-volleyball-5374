@@ -30,7 +30,7 @@ function HomePage() {
   const initialVal = setIntoNum(searchParams.get("limit"));
   const [limit,setLimit]=useState(initialVal)
     const [heart,setHeart]=useState(false)
-    const {addToFav,favItem} = useContext(AddFav)
+    const {addToFav,favItem} = useContext(AppContext)
    
     
     useEffect(()=>{
