@@ -90,14 +90,14 @@ function HomePage() {
        
         <SimpleGrid  columns={[1,2,3,4]} gap={"15px"} margin="auto" marginTop={"20px"}>
         <Skeleton startColor='black' endColor='white' isLoaded={isLoaded}>
-        <Box  bg={"#6495ED"} borderRadius="10px" height={"370px"} marginTop="20px" color="white">
-            <Box >
+        <Box  bg={"#6495ED"} borderRadius="10px" height={"360px"} marginTop="20px" color="white" p={2}>
+            <Box>
                 <Text fontSize={"21px"} as="b">
                     Want to see your stuff here?
                 </Text>
             </Box>
             <Box margin={"auto"} marginTop={"20px"} width="90%">
-                <Text fontSize={"19px"} >
+                <Text fontSize={"17px"} alignItems="justify" >
                    Make some extrs cash by selling things in your community.Go on , it's quick and easy
                 </Text>
             </Box>
