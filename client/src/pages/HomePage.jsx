@@ -10,7 +10,7 @@ import {BsSuitHeartFill} from "react-icons/bs"
 import Footer from '../components/Footer'
 import NotFound from './NotFound'
 import NoData from './NoData'
-import { AddFav } from '../AuthContext/Fav'
+import { AddFav } from '../AuthContext/AppContextProvider'
 
 const setIntoNum = (value) => {
     value = Number(value);
