@@ -54,7 +54,6 @@ const AllRoutes = () => {
 
         <Route path="/favorites" element={<Like />}></Route>
 
-        {/* <Route path="/" element={<DummyLogin />}></Route> */}
         <Route path="/contwithphone" element={<LoginMobile />}></Route>
         <Route path="/contwithemail" element={<LoginEmail />}></Route>
 

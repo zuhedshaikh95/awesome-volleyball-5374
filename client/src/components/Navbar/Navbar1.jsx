@@ -233,6 +233,7 @@ const UpNavbar = () => {
                 </MenuList>
               </Menu>
             </Flex>
+            <Link to="/favorites">Favorites</Link>
           </Flex>
           {!isOpen ? (
             <Box mb="10px">
