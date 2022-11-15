@@ -23,10 +23,38 @@ app.get("/", async (request, response) => {
     while (currentIndex != 0) {
       let randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
-      [combined[currentIndex], combined[randomIndex]] = [combined[randomIndex],combined[currentIndex],];
+      [combined[currentIndex], combined[randomIndex]] = [
+        combined[randomIndex],
+        combined[currentIndex],
+      ];
     }
 
     response.send(combined);
+  } catch ({ message }) {
+    response.send(message);
+  }
+});
+
+app.post("/search", async (request, response) => {
+  const { q } = request.query;
+  try {
+    const cars = await Cars.find({});
+    const mobiles = await Mobile.find({});
+    const bikes = await Bike.find({});
+    const laptops = await Laptop.find({});
+    const houses = await House.find({});
+
+    let combined = [...cars, ...mobiles, ...houses, ...laptops, ...bikes];
+
+    const result = combined.filter((item) => {
+      if (item.productName) {
+        if (item.productName.includes(q)) {
+          return item;
+        }
+      }
+    });
+
+    response.send(result);
   } catch ({ message }) {
     response.send(message);
   }
