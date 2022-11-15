@@ -21,7 +21,7 @@ import { useContext } from "react";
 import {AppContext} from "../../AuthContext/AppContextProvider";
 
 const ProfileBtn = () => {
-  const { toggleAuth, isAuth } = useContext(AppContext);
+  const { toggleAuth, isAuth, username } = useContext(AppContext);
   const handleLogOut = () => {
     localStorage.setItem("isLogin", false);
     console.log("hello");
@@ -63,7 +63,7 @@ const ProfileBtn = () => {
                   size="md"
                   font-family="Roboto,Arial,Helvetica,sans-serif"
                 >
-                  Hello,
+                  Hello, {username}
                 </Heading>
               </Box>
 

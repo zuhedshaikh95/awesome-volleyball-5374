@@ -120,92 +120,68 @@ function HomePage() {
             </Box>
           </Skeleton>
           {products.map((item) => (
-              <Box
-                key={item.id}
-                margin={"auto"}
-                maxW="sm"
-                borderWidth="1px"
-                borderRadius="lg"
-                overflow="hidden"
-              >
-                <Box
-                  onClick={() => addFav(item)}
-                  display={"flex"}
-                  justifyContent={"flex-end"}
-                >
-                  <FiHeart
-                    size={25}
-                    style={{ marginRight: "10px", marginTop: "20px" }}
-                  />
+            <>
+
+              <Box key={item.id} margin={"auto"} width="100%" borderWidth='1px' borderRadius='lg' height={"370px"} >
+
+                <Box onClick={() => addFav(item)} display={"flex"} justifyContent={"flex-end"} >
+                  {/* <Tooltip label="I don't close on click" closeOnClick={false}> */}
+                  <FiHeart size={20} style={{ marginRight: "10px", marginTop: "20px" }} />
                   {/* </Tooltip> */}
+
                 </Box>
-                {item.featured === true ? (
-                  <Skeleton
-                    startColor="black"
-                    endColor="white"
-                    isLoaded={isLoaded}
-                  >
-                    <Box
-                      width="30%"
-                      bg={"orange"}
-                      p={1}
-                      marginBottom="20px"
-                      marginLeft={"10px"}
-                    >
-                      <Text>FEATURED</Text>
-                    </Box>
-                  </Skeleton>
-                ) : null}
-                <Skeleton
-                  startColor="black"
-                  endColor="white"
-                  isLoaded={isLoaded}
-                >
+                {
+                  item.featured === true ?
+                    <Skeleton startColor='black' endColor='white' isLoaded={isLoaded}>
+                      <Box width="25%" bg={"orange"} marginLeft={"10px"}>
+                        <Text fontSize={"11px"} >
+                          FEATURED
+                        </Text>
+                      </Box>
+                    </Skeleton>
+                    : null
+                }
+                <Skeleton startColor='black' endColor='white' isLoaded={isLoaded}>
                   <Link to={`${item.type}/${item._id}`}>
                     <Box margin={"auto"} width={"90%"}>
-                      <Image
-                        margin={"auto"}
-                        width={"90%"}
-                        height={"220px"}
-                        src={item.productImages}
-                      />
+
+                      <Image margin={"auto"} width={"90%"} height={"180px"} src={item.productImages} />
                     </Box>
                   </Link>
+
                 </Skeleton>
 
-                <Box p="6">
-                  <Skeleton
-                    startColor="black"
-                    endColor="white"
-                    isLoaded={isLoaded}
-                  >
+
+                <Box p='6'>
+
+                  <Skeleton startColor='black' endColor='white' isLoaded={isLoaded}>
                     <Link to={`${item.type}/${item._id}`}>
                       <Box
-                        mt="1"
-                        lineHeight="tight"
+                        mt='1'
+
+
+                        lineHeight='tight'
                         noOfLines={1}
                         display="flex"
+
                       >
-                        <Text
-                          fontSize={["22px", "24px", "26px", "28px"]}
-                          as="b"
-                        >
+                        <Text fontSize={["15px", "17px", "19px", "20px"]} as="b">
                           ₹ {item.price}
                         </Text>
                       </Box>
                     </Link>
                   </Skeleton>
-                  <Skeleton
-                    startColor="black"
-                    endColor="white"
-                    isLoaded={isLoaded}
-                  >
+                  <Skeleton startColor='black' endColor='white' isLoaded={isLoaded}>
                     <Link to={`${item.type}/${item._id}`}>
-                      <Box mt="1" lineHeight="tight" noOfLines={1}>
-                        <Text
-                          fontSize={["13px", "14px", "15px", "18px"]}
-                          color={"grey"}
-                        >
+                      <Box
+                        mt='1'
+
+                        lineHeight='tight'
+                        noOfLines={1}
+
+
+                      >
+                        <Text fontSize={["10px", "11px", "13px", "15px"]} color={"grey"}>
                           {item.description}
                         </Text>
                       </Box>
@@ -214,32 +190,24 @@ function HomePage() {
 
                   <Link to={`${item.type}/${item._id}`}>
                     <Box
-                      mt="1"
-                      lineHeight="tight"
+                      mt='1'
+                      lineHeight='tight'
                       display={"flex"}
                       justifyContent="space-between"
                       color={"grey"}
                       marginTop="10px"
                       width="100%"
                     >
-                      <Skeleton
-                        startColor="black"
-                        endColor="white"
-                        isLoaded={isLoaded}
-                      >
+                      <Skeleton startColor='black' endColor='white' isLoaded={isLoaded}>
                         <Box>
-                          <Text fontSize={["12px", "12px", "12px", "15px"]}>
+                          <Text fontSize={["7px", "8px", "9px", "11px"]}>
                             {item.location}
                           </Text>
                         </Box>
                       </Skeleton>
-                      <Skeleton
-                        startColor="black"
-                        endColor="white"
-                        isLoaded={isLoaded}
-                      >
+                      <Skeleton startColor='black' endColor='white' isLoaded={isLoaded}>
                         <Box>
-                          <Text fontSize={["12px", "12px", "12px", "15px"]}>
+                          <Text fontSize={["7px", "8px", "9px", "11px"]}>
                             {item.postedOn}
                           </Text>
                         </Box>
@@ -248,6 +216,7 @@ function HomePage() {
                   </Link>
                 </Box>
               </Box>
+            </>
           ))}
         </SimpleGrid>
       </Box>

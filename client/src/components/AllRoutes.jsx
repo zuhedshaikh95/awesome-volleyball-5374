@@ -27,6 +27,7 @@ import PostAdLaptop from "../pages/PostAdLaptop";
 import PostAdMobile from "../pages/PostAdMobile";
 import PostAdCar from "../pages/PostAdCar";
 
+import Like from "../pages/Likes";
 
 const AllRoutes = () => {
   return (
@@ -43,7 +44,7 @@ const AllRoutes = () => {
         <Route path="/cars/:_id" element={<CarSingle />} />
 
         <Route path="/mobiles" element={<Mobiles />}></Route>
-        <Route path="mobile/:_id" element={<MobileSingle />} />
+        <Route path="mobiles/:_id" element={<MobileSingle />} />
 
         <Route path="/laptops" element={<Laptops />}></Route>
         <Route path="/laptops/:_id" element={<LaptopSingle />} />
@@ -51,7 +52,9 @@ const AllRoutes = () => {
         <Route path="/houses" element={<Houses />}></Route>
         <Route path="/houses/:_id" element={<HouseSingle />} />
 
-        <Route path="/" element={<DummyLogin />}></Route>
+        <Route path="/favorites" element={<Like />}></Route>
+
+        {/* <Route path="/" element={<DummyLogin />}></Route> */}
         <Route path="/contwithphone" element={<LoginMobile />}></Route>
         <Route path="/contwithemail" element={<LoginEmail />}></Route>
 

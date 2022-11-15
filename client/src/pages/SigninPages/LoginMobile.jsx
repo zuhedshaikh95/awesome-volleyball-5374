@@ -23,7 +23,7 @@ const GenOtp = (otpLength) => {
   let otp = [];
 
   for (let i = 0; i < otpLength; i++) {
-    otp += digits[Math.floor(Math.random() * 10)];
+    otp += digits[Math.floor(Math.random() * 10)]
   }
   return Number(otp);
 };
@@ -93,7 +93,7 @@ const LoginMobile = () => {
           </PinInput>
         </HStack>
       </Box>{" "}
-      <UserName input={input} setInput={setInput} />
+      <UserName />
       <br />
       <Box>
         <Button

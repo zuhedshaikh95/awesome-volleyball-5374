@@ -2,24 +2,21 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { AddFav } from "../AuthContext/Fav";
+import {AppContext} from "../AuthContext/AppContextProvider";
 import {
   Box,
   Button,
-  Flex,
   Image,
   SimpleGrid,
   Skeleton,
-  Stack,
-  Text,
-  Tooltip,
+  Text
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import NoFav from "./NoFav";
 function Like() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const { favItem, addToFav, deleteFromFav } = useContext(AddFav);
+  const { favItem, addToFav, deleteFromFav } = useContext(AppContext);
 
   useEffect(() => {
     setInterval(() => {

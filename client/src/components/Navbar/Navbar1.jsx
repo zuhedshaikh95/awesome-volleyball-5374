@@ -51,9 +51,10 @@ import SellButton from "./SellButton";
 import Becho1 from "./images/Becho.png";
 
 const UpNavbar = () => {
-  const { isAuth } = useContext(AppContext);
+  const { isAuth, username, logout } = useContext(AppContext);
   const [isLargerThan425] = useMediaQuery("(min-width: 426px)");
   const { isOpen, onOpen, onClose } = useDisclosure();
+  
   if (isLargerThan425) {
     return (
       <Box
@@ -154,6 +155,7 @@ const UpNavbar = () => {
                 <MdNotificationsNone />
               </Box>
               <ProfileBtn />
+              <Link to="/favorites">Favorites</Link>
             </>
           ) : (
             <Box
@@ -221,7 +223,6 @@ const UpNavbar = () => {
                   color="#002f34"
                 >
                   <Flex alignItems="center">
-                    <Text px="10px">Mumbai</Text> <HiOutlineLocationMarker />
                   </Flex>
                 </MenuButton>
                 <MenuList>
@@ -346,7 +347,7 @@ const UpNavbar = () => {
                     </Text>
                   </Box>
                 </Flex>
-                
+
                 <Flex alignItems="center" my="10px" fontSize="20px" py="8px">
                   <Box mx="5px">
                     <GiEarthAmerica />

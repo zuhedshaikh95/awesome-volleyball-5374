@@ -188,6 +188,9 @@ const Mobiles = () => {
               <Button onClick={() => handlePriceLimit()}>Apply</Button>
             </Box>
           </Box>
+          <Button onClick={() => {
+            window.location.reload();
+          }}>Reset Filters</Button>
         </Box>
         <Box w={{ base: "100%", md: "74%" }}>
           <Flex justifyContent="space-between">

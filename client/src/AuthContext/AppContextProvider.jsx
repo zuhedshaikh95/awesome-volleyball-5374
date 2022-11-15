@@ -7,9 +7,14 @@ function AppContextProvider({ children }) {
   const [favItem, setFavItem] = useState([]);
   const isLogin = localStorage.getItem("isLogin");
   const [isAuth, setIsAuth] = useState(isLogin);
+  const [username, setUserName] = useState("");
 
   function toggleAuth() {
     setIsAuth(!isAuth);
+  }
+
+  const logout = () => {
+    setIsAuth(false);
   }
 
   const addToFav = (data) => {
@@ -23,7 +28,7 @@ function AppContextProvider({ children }) {
   };
 
   return (
-    <AppContext.Provider value={{ addToFav, deleteFromFav, isAuth, toggleAuth }}>
+    <AppContext.Provider value={{ addToFav, deleteFromFav, isAuth, toggleAuth, favItem, setUserName, username }}>
       {children}
     </AppContext.Provider>
   );

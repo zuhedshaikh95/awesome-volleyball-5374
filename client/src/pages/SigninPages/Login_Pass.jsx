@@ -6,14 +6,20 @@ import {
   FormLabel,
   HStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { AppContext } from "../../AuthContext/AppContextProvider";
 
-const UserName = ({ input, setInput }) => {
+const UserName = () => {
   const [textAreaCount, settextAreaCount] = useState(0);
+  const { username, setUserName, isAuth } = useContext(AppContext);
 
-  const handleInputChange = (el) => {
-    setInput(el.target.value);
-    settextAreaCount(el.target.value.length);
+  if(isAuth){
+    return <Navigate to="/" />
+  }
+
+  const handleInputChange = (event) => {
+    setUserName(event.target.value);
   };
   let isError = false;
   if (textAreaCount > 0 && textAreaCount < 4) {
@@ -35,12 +41,10 @@ const UserName = ({ input, setInput }) => {
             borderRadius="2px"
             type="text"
             colorScheme="blackAlpha"
-            value={input}
+            value={username}
             pr="55px"
             focusBorderColor="#00a49f"
-            onChange={(el) => {
-              handleInputChange(el);
-            }}
+            onChange={handleInputChange}
           />
 
           <HStack justifyContent="space-between">
