@@ -115,13 +115,13 @@ This project was built using React, Chakra UI, HTML, CSS, JavaScript, Rest API, 
 ### Setup
 
 
-The project repository can be found in [GitHub link](https://github.com/singhprakash14/Becho.com) or just clone the project using this command.
+The project repository can be found in [GitHub link](https://github.com/zuhedshaikh95/awesome-volleyball-5374) or just clone the project using this command.
 
 
 ```
 Using HTTPS
 
-# git clone https://github.com/singhprakash14/becho.com.git
+# git clone https://github.com/zuhedshaikh95/awesome-volleyball-5374.git
 ```
 
 + Open terminal on your workspace with
